@@ -1,0 +1,24 @@
+item.butt_of_power.name=Butt of Power
+item.blue_rough_gem.name=Rough Blue Gem
+item.red_rough_gem.name=Rough Red Gem
+item.green_rough_gem.name=Rough Green Gem
+item.gem_dust.name=Gem Dust
+
+item.arcane_sword.name=Gem Sword
+item.arcane_pickaxe.name=Gem Pickaxe
+item.arcane_multitool.name=Gem Multitool
+
+item.arcane_helmet.name=Gem Helmet
+item.arcane_chestplate.name=Gem Chestplate
+item.arcane_leggings.name=Gem Leggings
+item.arcane_boots.name=Gem Boots
+
+item.arcane_cocoa.name=Magic Cocoa
+
+tile.test_block.name=Test Block
+
+tile.butt_ore.name=Butt Ore
+tile.arcane_multi_ore.name=Multi Ore
+tile.blue_gem_ore.name=Blue Gem Ore
+tile.red_gem_ore.name=Red Gem Ore
+tile.green_gem_ore.name=Green Gem Ore

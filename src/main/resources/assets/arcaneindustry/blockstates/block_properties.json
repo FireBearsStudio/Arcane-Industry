@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "type=white": { "model":"arcaneindustry:block_properties_white" },
+        "type=black": { "model":"arcaneindustry:block_properties_black" }
+    }
+}
