@@ -21,5 +21,8 @@ public class ArcaneCrafting {
 		GameRegistry.addSmelting(ArcaneBlocks.blueGemOre, new ItemStack(ArcaneItems.blueRoughGem, 3), 0.5F);
 		GameRegistry.addSmelting(ArcaneBlocks.redGemOre, new ItemStack(ArcaneItems.redRoughGem, 3), 0.5F);
 		GameRegistry.addSmelting(ArcaneBlocks.greenGemOre, new ItemStack(ArcaneItems.greenRoughGem, 3), 0.5F);
+		
+		// grinder
+		// GrinderRecipes.instance().addGrindingRecipe(new ItemStack(Items.baked_potato, 2), new ItemStack(Items.diamond), 1.0F); // example
 	}
 }

@@ -1,0 +1,9 @@
+{
+    "parent": "block/orientable",
+    "textures": 
+    {
+        "top": "arcaneindustry:blocks/grinder_top",
+        "front": "arcaneindustry:blocks/grinder_front",
+        "side": "arcaneindustry:blocks/grinder_side"
+    }
+}

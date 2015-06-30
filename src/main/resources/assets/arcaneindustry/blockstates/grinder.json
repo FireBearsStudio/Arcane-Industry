@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "arcaneindustry:grinder" },
+        "facing=south": { "model": "arcaneindustry:grinder", "y": 180 },
+        "facing=west":  { "model": "arcaneindustry:grinder", "y": 270 },
+        "facing=east":  { "model": "arcaneindustry:grinder", "y": 90 }
+    }
+}

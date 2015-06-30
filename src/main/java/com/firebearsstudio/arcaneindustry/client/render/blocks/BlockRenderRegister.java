@@ -18,14 +18,22 @@ public class BlockRenderRegister {
 	}
 	
 	public static void registerBlockRenderer() {
+		// blocks
 		reg(ArcaneBlocks.testBlock);
+		
+		// meta blocks
 		reg(ArcaneBlocks.propertyBlock, 0, "block_properties_white");
 		reg(ArcaneBlocks.propertyBlock, 1, "block_properties_black");
+		
+		// ores
 		reg(ArcaneBlocks.buttOre);
 		reg(ArcaneBlocks.multiOre);
 		reg(ArcaneBlocks.blueGemOre);
 		reg(ArcaneBlocks.redGemOre);
 		reg(ArcaneBlocks.greenGemOre);
+		
+		// tile entities
+		reg(ArcaneBlocks.grinder);
 	}
 	
 	public static void reg(Block block) {

@@ -22,3 +22,7 @@ tile.arcane_multi_ore.name=Multi Ore
 tile.blue_gem_ore.name=Blue Gem Ore
 tile.red_gem_ore.name=Red Gem Ore
 tile.green_gem_ore.name=Green Gem Ore
+
+tile.grinder.name=Grinder
+
+container.grinder.name=Grinder

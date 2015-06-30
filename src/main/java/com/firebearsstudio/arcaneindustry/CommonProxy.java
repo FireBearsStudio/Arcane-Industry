@@ -17,12 +17,15 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		ArcaneItems.createItems();
 		ArcaneBlocks.createBlocks();
+		ArcaneTileEntities.init();
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
 		ArcaneCrafting.initCrafting();
 		GameRegistry.registerWorldGenerator(new ArcaneWorldGen(), 0);
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}
 	
 	@EventHandler
