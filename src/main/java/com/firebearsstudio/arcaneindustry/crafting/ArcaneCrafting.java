@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.firebearsstudio.arcaneindustry.blocks.ArcaneBlocks;
 import com.firebearsstudio.arcaneindustry.items.ArcaneItems;
+import com.firebearsstudio.arcaneindustry.recipes.GrinderRecipes;
 
 public class ArcaneCrafting {
 
@@ -23,6 +24,8 @@ public class ArcaneCrafting {
 		GameRegistry.addSmelting(ArcaneBlocks.greenGemOre, new ItemStack(ArcaneItems.greenRoughGem, 3), 0.5F);
 		
 		// grinder
-		// GrinderRecipes.instance().addGrindingRecipe(new ItemStack(Items.baked_potato, 2), new ItemStack(Items.diamond), 1.0F); // example
+		GrinderRecipes.instance().addGrindingRecipe(new ItemStack(ArcaneItems.blueRoughGem), new ItemStack(ArcaneItems.gemDust), 0.2F);
+		GrinderRecipes.instance().addGrindingRecipe(new ItemStack(ArcaneItems.redRoughGem), new ItemStack(ArcaneItems.gemDust), 0.2F);
+		GrinderRecipes.instance().addGrindingRecipe(new ItemStack(ArcaneItems.greenRoughGem), new ItemStack(ArcaneItems.gemDust), 0.2F);
 	}
 }
