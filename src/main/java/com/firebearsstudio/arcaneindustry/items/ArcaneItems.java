@@ -15,6 +15,8 @@ public class ArcaneItems {
 	public static Item redRoughGem;
 	public static Item greenRoughGem;
 	public static Item gemDust;
+	public static Item dustIron;
+	public static Item dustGold;
 	
 	public static MetaItem metaItem;
 	
@@ -39,6 +41,8 @@ public class ArcaneItems {
 		GameRegistry.registerItem(redRoughGem = new BasicItem("red_rough_gem"), "red_rough_gem");
 		GameRegistry.registerItem(greenRoughGem = new BasicItem("green_rough_gem"), "green_rough_gem");
 		GameRegistry.registerItem(gemDust = new BasicItem("gem_dust"), "gem_dust");
+		GameRegistry.registerItem(dustIron = new BasicItem("iron_dust"), "iron_dust");
+		GameRegistry.registerItem(dustGold = new BasicItem("gold_dust"), "gold_dust");
 		
 		GameRegistry.registerItem(metaItem = new MetaItem("meta_item"), "meta_item");
 		

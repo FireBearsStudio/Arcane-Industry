@@ -1,6 +1,7 @@
 package com.firebearsstudio.arcaneindustry.recipes;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -8,7 +9,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
+import com.firebearsstudio.arcaneindustry.blocks.ArcaneBlocks;
+import com.firebearsstudio.arcaneindustry.items.ArcaneItems;
 import com.google.common.collect.Maps;
 
 public class GrinderRecipes {
@@ -37,6 +41,51 @@ public class GrinderRecipes {
 	public void addGrindingRecipe(ItemStack stackIn, ItemStack stackOut, float exp) {
 		grindingList.put(stackIn, stackOut);
 		experienceList.put(stackOut, Float.valueOf(exp));
+	}
+	
+	public void addGrindingRecipe(String input, ItemStack stackOut, float exp) {
+		List<ItemStack> list1 = OreDictionary.getOres(input);
+
+		for (int i = 0; i < list1.size(); i++) {
+			if (list1.get(i) != null) {
+				ItemStack stack1 = list1.get(i).copy();
+
+				grindingList.put(stack1, stackOut);
+				experienceList.put(stackOut, Float.valueOf(exp));			
+			}
+		}
+	}
+	
+	public void addGrindingRecipe(ItemStack stackIn, String output, int amountOutput, float exp) {
+		List<ItemStack> list1 = OreDictionary.getOres(output);
+
+		for (int i = 0; i < list1.size(); i++) {
+			if (list1.get(i) != null) {
+				ItemStack stack1 = list1.get(i).copy();
+				stack1.stackSize = amountOutput;
+
+				grindingList.put(stackIn, stack1);
+				experienceList.put(stack1, Float.valueOf(exp));			
+			}
+		}
+	}
+	
+	public void addGrindingRecipe(String input, String output, int amountOutput, float exp) {
+		List<ItemStack> list1 = OreDictionary.getOres(input);
+		List<ItemStack> list2 = OreDictionary.getOres(output);
+
+		for (int i = 0; i < list1.size(); i++) {
+			for (int j = 0; j < list2.size(); j++) {
+				if (list1.get(i) != null && list2.get(j) != null) {
+					ItemStack stack1 = list1.get(i).copy();
+					ItemStack stack2 = list2.get(j).copy();
+					stack2.stackSize = amountOutput;
+
+					grindingList.put(stack1, stack2);
+					experienceList.put(stack2, Float.valueOf(exp));			
+				}
+			}
+		}
 	}
 	
 	// Returns the grinding result of an item

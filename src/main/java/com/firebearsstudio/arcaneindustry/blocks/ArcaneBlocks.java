@@ -19,6 +19,8 @@ public class ArcaneBlocks {
 	public static ArcaneBlockBasicOre redGemOre;
 	public static ArcaneBlockBasicOre greenGemOre;
 	
+	public static ArcaneBasicGrinder grinder;
+	
 	public static void createBlocks() {
 		GameRegistry.registerBlock(testBlock = new BasicBlock("test_block").setLightLevel(1.0f), "test_block");
 		GameRegistry.registerBlock(propertyBlock = new BlockProperties("block_properties", Material.cloth, 10.0f, 6.0f), ItemBlockMeta.class, "block_properties");
@@ -27,5 +29,8 @@ public class ArcaneBlocks {
 		GameRegistry.registerBlock(blueGemOre = new ArcaneBlockBasicOre("blue_gem_ore", Material.rock, 10.0F, 6.0F, "pickaxe", 2), "blue_gem_ore");
 		GameRegistry.registerBlock(redGemOre = new ArcaneBlockBasicOre("red_gem_ore", Material.rock, 10.0F, 6.0F, "pickaxe", 2), "red_gem_ore");
 		GameRegistry.registerBlock(greenGemOre = new ArcaneBlockBasicOre("green_gem_ore", Material.rock, 10.0F, 6.0F, "pickaxe", 2), "green_gem_ore");
+		
+		// machines
+		GameRegistry.registerBlock(grinder = new ArcaneBasicGrinder("grinder"), "grinder");
 	}
 }

@@ -3,6 +3,8 @@ item.blue_rough_gem.name=Rough Blue Gem
 item.red_rough_gem.name=Rough Red Gem
 item.green_rough_gem.name=Rough Green Gem
 item.gem_dust.name=Gem Dust
+item.iron_dust.name=Iron Dust
+item.gold_dust.name=Gold Dust
 
 item.arcane_sword.name=Gem Sword
 item.arcane_pickaxe.name=Gem Pickaxe
@@ -25,4 +27,4 @@ tile.green_gem_ore.name=Green Gem Ore
 
 tile.grinder.name=Grinder
 
-container.grinder.name=Grinder
+container.grinder=Grinder

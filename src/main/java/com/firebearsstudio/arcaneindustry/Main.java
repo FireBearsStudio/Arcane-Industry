@@ -17,6 +17,10 @@ public class Main {
 	
 	@Instance
 	public static Main instance = new Main();
+
+	public enum GUI_ENUM {
+		GRINDER
+	}
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {

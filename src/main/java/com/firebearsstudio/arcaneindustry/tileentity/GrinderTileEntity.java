@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.firebearsstudio.arcaneindustry.blocks.TutorialGrinder;
+import com.firebearsstudio.arcaneindustry.blocks.ArcaneBasicGrinder;
 import com.firebearsstudio.arcaneindustry.inventory.GrinderContainer;
 import com.firebearsstudio.arcaneindustry.recipes.GrinderRecipes;
 

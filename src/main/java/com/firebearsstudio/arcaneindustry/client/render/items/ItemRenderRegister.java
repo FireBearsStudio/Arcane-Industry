@@ -18,6 +18,8 @@ public class ItemRenderRegister {
 		reg(ArcaneItems.redRoughGem);
 		reg(ArcaneItems.greenRoughGem);
 		reg(ArcaneItems.gemDust);
+		reg(ArcaneItems.dustIron);
+		reg(ArcaneItems.dustGold);
 		
 		reg(ArcaneItems.metaItem, 0, "meta_item_white");
 		reg(ArcaneItems.metaItem, 1, "meta_item_black");

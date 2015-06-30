@@ -64,7 +64,7 @@ public class GrinderGui extends GuiContainer {
 		String s = tileGrinder.getDisplayName().getUnformattedText();
 		fontRendererObj.drawString(s, LABEL_XPOS, LABEL_YPOS, Color.DARK_GRAY.getRGB());
 		//fontRendererObj.drawString(s, xSize / 2 - fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		//fontRendererObj.drawString(playerInventory.getDisplayName().getUnformattedText(), 8, ySize - 96 + 2, 4210752);
+		fontRendererObj.drawString(playerInventory.getDisplayName().getUnformattedText(), 8, ySize - 96 + 2, 4210752);
 		
 		List<String> hoveringText = new ArrayList<String>();
 		
