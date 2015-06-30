@@ -25,13 +25,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.firebearsstudio.arcaneindustry.Main;
 import com.firebearsstudio.arcaneindustry.tileentity.GrinderTileEntity;
 
-public class TutorialGrinder extends BlockContainer{
+public class ArcaneBasicGrinder extends BlockContainer{
 
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	
 	static boolean hasTileEntity;
 	
-	protected TutorialGrinder(String unlocalizedName) {
+	protected ArcaneBasicGrinder(String unlocalizedName) {
 		super(Material.rock);
 		this.setUnlocalizedName(unlocalizedName);
 		this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
@@ -40,15 +40,15 @@ public class TutorialGrinder extends BlockContainer{
 		this.stepSound = soundTypeSnow;
 		this.blockParticleGravity = 1.0F;
 		this.slipperiness = 0.6f;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		this.lightOpacity = 20;	// cast a light shadow
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
+		this.lightOpacity = 0;	// cast a light shadow
 		this.setTickRandomly(false);
 		this.useNeighborBrightness = false;
 	}
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random random, int fortune) {
-		return Item.getItemFromBlock(ModBlocks.grinder);
+		return Item.getItemFromBlock(ArcaneBlocks.grinder);
 	}
 	
 	@Override
@@ -116,7 +116,7 @@ public class TutorialGrinder extends BlockContainer{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, BlockPos pos) {
-		return Item.getItemFromBlock(ModBlocks.grinder);
+		return Item.getItemFromBlock(ArcaneBlocks.grinder);
 	}
 	
 	@Override
@@ -177,5 +177,15 @@ public class TutorialGrinder extends BlockContainer{
 				;// improve error handling
 			}
 		}
+	}
+	
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+	
+	@Override
+	public boolean isFullCube() {
+		return false;
 	}
 }

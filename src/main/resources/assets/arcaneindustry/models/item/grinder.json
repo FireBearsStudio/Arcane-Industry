@@ -1,5 +1,5 @@
 {
-    "parent":"arcaneindustry:block/grinder",
+    "parent": "arcaneindustry:block/grinder",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],
