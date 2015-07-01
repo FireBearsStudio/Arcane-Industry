@@ -1,10 +1,10 @@
 package com.firebearsstudio.arcaneindustry.blocks;
 
-import com.firebearsstudio.arcaneindustry.items.ArcaneItems;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import com.firebearsstudio.arcaneindustry.items.ArcaneItems;
 
 public class ArcaneBlocks {
 
@@ -18,8 +18,11 @@ public class ArcaneBlocks {
 	public static ArcaneBlockBasicOre blueGemOre;
 	public static ArcaneBlockBasicOre redGemOre;
 	public static ArcaneBlockBasicOre greenGemOre;
-	
+
 	public static ArcaneBasicGrinder grinder;
+	public static ArcaneBasicGrinder grinderActive;
+	
+	public static ArcaneInscriber inscriber;
 	
 	public static void createBlocks() {
 		GameRegistry.registerBlock(testBlock = new BasicBlock("test_block").setLightLevel(1.0f), "test_block");
@@ -31,6 +34,9 @@ public class ArcaneBlocks {
 		GameRegistry.registerBlock(greenGemOre = new ArcaneBlockBasicOre("green_gem_ore", Material.rock, 10.0F, 6.0F, "pickaxe", 2), "green_gem_ore");
 		
 		// machines
-		GameRegistry.registerBlock(grinder = new ArcaneBasicGrinder("grinder"), "grinder");
+		GameRegistry.registerBlock(grinder = new ArcaneBasicGrinder("grinder", false), "grinder");
+		GameRegistry.registerBlock(grinderActive = new ArcaneBasicGrinder("grinderActive", true), "grinderActive");
+		
+		GameRegistry.registerBlock(inscriber = new ArcaneInscriber("inscriber"), "inscriber");
 	}
 }

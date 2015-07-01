@@ -34,6 +34,7 @@ public class BlockRenderRegister {
 		
 		// tile entities
 		reg(ArcaneBlocks.grinder);
+		reg(ArcaneBlocks.inscriber);
 	}
 	
 	public static void reg(Block block) {

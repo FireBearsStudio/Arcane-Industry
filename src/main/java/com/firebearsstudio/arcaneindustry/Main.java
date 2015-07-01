@@ -1,5 +1,8 @@
 package com.firebearsstudio.arcaneindustry;
 
+import com.firebearsstudio.arcaneindustry.event.LivingDropEvent;
+
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -19,12 +22,14 @@ public class Main {
 	public static Main instance = new Main();
 
 	public enum GUI_ENUM {
-		GRINDER
+		GRINDER, INSCRIBER
 	}
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 		this.proxy.preInit(e);
+		
+		MinecraftForge.EVENT_BUS.register(new LivingDropEvent());
 	}
 	
 	@EventHandler

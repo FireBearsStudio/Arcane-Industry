@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "arcaneindustry:inscriber" },
+        "facing=south": { "model": "arcaneindustry:inscriber", "y": 180 },
+        "facing=west":  { "model": "arcaneindustry:inscriber", "y": 270 },
+        "facing=east":  { "model": "arcaneindustry:inscriber", "y": 90 }
+    }
+}

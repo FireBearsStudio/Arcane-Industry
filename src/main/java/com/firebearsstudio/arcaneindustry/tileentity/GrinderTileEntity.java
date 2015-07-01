@@ -1,5 +1,7 @@
 package com.firebearsstudio.arcaneindustry.tileentity;
 
+import java.util.Random;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -86,7 +88,7 @@ public class GrinderTileEntity extends TileEntityLockable implements IUpdatePlay
 			// started or stopped grinding, update block to change to active or inactive model
 			if (hasBeenGrinding != grindingSomething()) {
 				changedGrindingState = true;
-				//TutorialGrinder.changeBlockBasedOnGrindingStatus(grindingSomething(), worldObj, pos);
+				//ArcaneBasicGrinder.changeBlockBasedOnGrindingStatus(grindingSomething(), worldObj, pos);
 			}
 		}
 		
@@ -200,8 +202,7 @@ public class GrinderTileEntity extends TileEntityLockable implements IUpdatePlay
 		
 		// if input slot, reset the grinding timers
 		if (index == slotEnum.INPUT_SLOT.ordinal() && !isSameItemStackAlreadyInSlot) {
-			ticksPerItem = timeToGrindOneItem
-					(stack);
+			ticksPerItem = timeToGrindOneItem(stack);
 			ticksGrindingItemSoFar = 0;
 			markDirty();
 		}

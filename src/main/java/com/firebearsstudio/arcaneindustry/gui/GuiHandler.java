@@ -11,7 +11,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.firebearsstudio.arcaneindustry.Main;
 import com.firebearsstudio.arcaneindustry.inventory.GrinderContainer;
+import com.firebearsstudio.arcaneindustry.inventory.InscriberContainer;
 import com.firebearsstudio.arcaneindustry.tileentity.GrinderTileEntity;
+import com.firebearsstudio.arcaneindustry.tileentity.InscriberTileEntity;
 
 @SideOnly(Side.CLIENT)
 public class GuiHandler implements IGuiHandler {
@@ -24,6 +26,8 @@ public class GuiHandler implements IGuiHandler {
 		if (tileEntity != null) {	// if a tile entity is needed
 			if (ID == Main.GUI_ENUM.GRINDER.ordinal()) {	// checks id vs gui enum to run specific code
 				return new GrinderContainer(player.inventory, (GrinderTileEntity)tileEntity); 
+			} else if (ID == Main.GUI_ENUM.INSCRIBER.ordinal()) {
+				return new InscriberContainer(player.inventory, (InscriberTileEntity)tileEntity);
 			}
 		}
 		return null;
@@ -37,6 +41,8 @@ public class GuiHandler implements IGuiHandler {
 		if (tileEntity != null) {
 			if (ID == Main.GUI_ENUM.GRINDER.ordinal()) {
 				return new GrinderGui(player.inventory, (GrinderTileEntity)tileEntity);
+			} else if (ID == Main.GUI_ENUM.INSCRIBER.ordinal()) {
+				return new InscriberGui(player.inventory, (InscriberTileEntity)tileEntity);
 			}
 		}
 		return null;

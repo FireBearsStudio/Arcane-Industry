@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -19,28 +18,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.firebearsstudio.arcaneindustry.Main;
 import com.firebearsstudio.arcaneindustry.tileentity.GrinderTileEntity;
+import com.firebearsstudio.arcaneindustry.tileentity.InscriberTileEntity;
 
-public class ArcaneBasicGrinder extends BlockContainer{
+public class ArcaneInscriber extends BlockContainer {
 
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	
 	static boolean hasTileEntity;
-	static boolean isWorking; 
+	static boolean isWorking;
 	
-	protected ArcaneBasicGrinder(String unlocalizedName, boolean isWorking) {
+	protected ArcaneInscriber(String unlocalizedName) {
 		super(Material.rock);
 		this.setUnlocalizedName(unlocalizedName);
 		this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		
-		this.isWorking = isWorking;
-		
+
 		if (!isWorking) {
 			this.setCreativeTab(CreativeTabs.tabDecorations);
 		}
@@ -54,7 +51,7 @@ public class ArcaneBasicGrinder extends BlockContainer{
 		this.setTickRandomly(false);
 		this.useNeighborBrightness = false;
 	}
-	
+
 	@Override
 	public Item getItemDropped(IBlockState state, Random random, int fortune) {
 		return Item.getItemFromBlock(ArcaneBlocks.grinder);
@@ -83,35 +80,18 @@ public class ArcaneBasicGrinder extends BlockContainer{
 			world.setBlockState(pos, state.withProperty(FACING, enumFacing), 2);
 		}
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
-			player.openGui(Main.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+			player.openGui(Main.instance, 1, world, pos.getX(), pos.getY(), pos.getZ());
 		}
 		
 		return true;
 	}
-	
-	public static void changeBlockBasedOnGrindingStatus(boolean isGrinding, World world, BlockPos pos) {
-       // IBlockState iblockstate = world.getBlockState(pos);
-       // TileEntity tileentity = world.getTileEntity(pos);
-        
-		if (isGrinding) {
-			world.setBlockState(pos, ArcaneBlocks.grinderActive.getDefaultState().withProperty(FACING, 1));
-		} else {
-			world.setBlockState(pos, ArcaneBlocks.grinder.getDefaultState().withProperty(FACING, 1));
-		}
-
-        /*if (tileentity != null) {
-            tileentity.validate();
-            world.setTileEntity(pos, tileentity);
-        }*/
-	}
-
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new GrinderTileEntity();
+		return new InscriberTileEntity();
 	}
 
 	@Override
@@ -148,7 +128,7 @@ public class ArcaneBasicGrinder extends BlockContainer{
 	public int getRenderType() {
 		return 3;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IBlockState getStateForEntityRender(IBlockState state) {
@@ -202,33 +182,5 @@ public class ArcaneBasicGrinder extends BlockContainer{
 				;// improve error handling
 			}
 		}
-	}
-	
-   /* @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-    {
-        if (this.isWorking)
-        {
-            //EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-            double d0 = (double)pos.getX() + 0.25D;
-            double d1 = (double)pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
-            double d2 = (double)pos.getZ() + 0.25D;
-            double d3 = 0.52D;
-            double d4 = rand.nextDouble() * 0.6D - 0.3D;
-            
-            worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, 0.0D, 0.0D, 0.0D, new int[0]);
-        } else {
-        	System.out.println("not working");
-        }
-    }*/
-	
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
-	}
-	
-	@Override
-	public boolean isFullCube() {
-		return false;
 	}
 }

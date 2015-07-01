@@ -26,5 +26,7 @@ tile.red_gem_ore.name=Red Gem Ore
 tile.green_gem_ore.name=Green Gem Ore
 
 tile.grinder.name=Grinder
+tile.inscriber.name=Inscriber
 
 container.grinder=Grinder
+container.inscriber=Inscriber

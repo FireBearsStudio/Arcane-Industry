@@ -28,25 +28,49 @@ public class ArcaneCrafting {
 		OreDictionary.registerOre("dustGem", ArcaneItems.gemDust);
 		OreDictionary.registerOre("dustIron", ArcaneItems.dustIron);
 		OreDictionary.registerOre("dustGold", ArcaneItems.dustGold);
+		OreDictionary.registerOre("gemLife", ArcaneItems.lifeCrystal);
 	}
 	
 	public static void initCrafting() {
-		// shaped
+		// SHAPED
 		GameRegistry.addRecipe(new ItemStack(ArcaneBlocks.testBlock), "AA", "AA", 'A', ArcaneItems.gemDust);
+		// armor
+		// -green
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneHelmet), "AAA", "A A", "   ", 'A', "gemPeridot"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneChestplate), "A A", "AAA", "AAA", 'A', "gemPeridot"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneLeggings), "AAA", "A A", "A A", 'A', "gemPeridot"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneBoots), "A A", "A A", "   ", 'A', "gemPeridot"));
+		// -blue
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneHelmet), "AAA", "A A", "   ", 'A', "gemRuby"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneChestplate), "A A", "AAA", "AAA", 'A', "gemRuby"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneLeggings), "AAA", "A A", "A A", 'A', "gemRuby"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneBoots), "A A", "A A", "   ", 'A', "gemRuby"));
+		// -red
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneHelmet), "AAA", "A A", "   ", 'A', "gemSapphire"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneChestplate), "A A", "AAA", "AAA", 'A', "gemSapphire"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneLeggings), "AAA", "A A", "A A", 'A', "gemSapphire"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneBoots), "A A", "A A", "   ", 'A', "gemSapphire"));
 		
-		// shapeless
+		// tools
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcanePickaxe), "AAA", " S ", " S ", 'A', "gemPeridot", 'S', "woodStick"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneSword), " A ", " A ", " S ", 'A', "gemPeridot", 'S', "woodStick"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneSword), "  A", "  A", "  S", 'A', "gemPeridot", 'S', "woodStick"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneItems.arcaneSword), "A  ", "A  ", "S  ", 'A', "gemPeridot", 'S', "woodStick"));
+		
+		// SHAPELESS
 		GameRegistry.addShapelessRecipe(new ItemStack(ArcaneItems.buttOfPower), Items.redstone, new ItemStack(Items.dye, 1, 4));
 		
-		// smelting
+		// SMELTING
 		addSmeltingRecipe("dustIron", "ingotIron", 0.1F);
 		addSmeltingRecipe("dustGold", "ingotGold", 0.1F);
 		
-		// grinder
-		// the grinder itself
+		// GRINDER
+		// -grinder itself
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneBlocks.grinder), 
 				"   ", 
 				"ABC", 
 				"DDD", 'A', "plankWood", 'B', "stickWood", 'C', "stone", 'D', Blocks.stone_slab));
+		
 		// grinder recipes
 		// gem dust
 		GrinderRecipes.instance().addGrindingRecipe("gemSapphire", "dustGem", 1, 0.2F);
@@ -68,6 +92,16 @@ public class ArcaneCrafting {
 		GrinderRecipes.instance().addGrindingRecipe("oreCoal", new ItemStack(Items.coal, 4), 0.2F);
 		GrinderRecipes.instance().addGrindingRecipe("oreLapis", "gemLapis", 6, 1.0F);
 		GrinderRecipes.instance().addGrindingRecipe("oreQuartz", "gemQuartz", 4, 1.0F);
+		
+		// INSCRIBER
+		// -inscriber itself
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArcaneBlocks.inscriber), 
+				"ABC", 
+				"SLS", 
+				"SSS", 'A', "gemPeridot", 'B', "gemRuby", 'C', "gemSapphire", 'S', "stone", 'L', "gemLife"));
+
+		// inscriber recipes
+		
 	}
 	
 	static void addSmeltingRecipe(String input, String output, float exp) {
