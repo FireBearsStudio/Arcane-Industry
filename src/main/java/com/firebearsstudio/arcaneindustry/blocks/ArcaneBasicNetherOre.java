@@ -8,32 +8,21 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class ArcaneBlockOre extends Block {
-	
+public class ArcaneBasicNetherOre extends Block {
+
 	private Item drop;
 	private int meta;
 	private int least_quantity;
 	private int most_quantity;
-	
-	protected ArcaneBlockOre(String unlocalizedName, Material mat, Item drop, int meta, int least, int most) {
+
+	protected ArcaneBasicNetherOre(String unlocalizedName, Material mat, float hardness, float resistance, String tool, int harvestLvl) {
 		super(mat);
-		this.drop = drop;
-		this.meta = meta;
-		this.least_quantity = least;
-		this.most_quantity = most;
-		this.setHarvestLevel("pickaxe", 1);
-		this.setHardness(2.0F);
-		this.setResistance(15.0F);
 		this.setUnlocalizedName(unlocalizedName);
+		this.setHardness(hardness);
+		this.setResistance(resistance);
+		this.setHarvestLevel(tool, harvestLvl);
+		this.setStepSound(soundTypeStone);
 		this.setCreativeTab(CreativeTabs.tabBlock);
-	}
-	
-	protected ArcaneBlockOre(String unlocalizedName, Material mat, Item drop, int least_quantity, int most_quantity) {
-		this(unlocalizedName, mat, drop, 0, least_quantity, most_quantity);
-	}	
-	
-	protected ArcaneBlockOre(String unlocalizedName, Material mat, Item drop) {
-		this(unlocalizedName, mat, drop, 1, 1);
 	}
 	
 	@Override

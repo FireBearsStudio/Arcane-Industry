@@ -2,6 +2,8 @@ package com.firebearsstudio.arcaneindustry.world;
 
 import java.util.Random;
 
+import net.minecraft.block.state.pattern.BlockHelper;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -11,31 +13,22 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 import com.firebearsstudio.arcaneindustry.blocks.ArcaneBlocks;
 
-public class ArcaneWorldGen implements IWorldGenerator {
+public class ArcaneNetherGen implements IWorldGenerator {
 
-	private WorldGenerator gen_green_gem_ore; //Generates Green Gem Ore(used in Overworld)
-	private WorldGenerator gen_red_gem_ore; //Generates Red Gem Ore(used in Overworld)
-	private WorldGenerator gen_blue_gem_ore; //Generates Blue Gem Ore(used in Overworld)
-	private WorldGenerator gen_truesilver_ore; //Generates Truesilver Ore(used in Overworld)
+	private WorldGenerator gen_infernium_ore; //Generates Infernium Ore(used in Nether)
 	
-	public ArcaneWorldGen() {
-		this.gen_green_gem_ore = new WorldGenMinable(ArcaneBlocks.greenGemOre.getDefaultState(), 8);
-		this.gen_red_gem_ore = new WorldGenMinable(ArcaneBlocks.redGemOre.getDefaultState(), 8);
-		this.gen_blue_gem_ore = new WorldGenMinable(ArcaneBlocks.blueGemOre.getDefaultState(), 8);
-		this.gen_truesilver_ore = new WorldGenMinable(ArcaneBlocks.truesilverOre.getDefaultState(), 8);
+	public ArcaneNetherGen() {
+		this.gen_infernium_ore = new WorldGenMinable(ArcaneBlocks.greenGemOre.getDefaultState(), 8, BlockHelper.forBlock(Blocks.netherrack));
 	}
 	
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		switch (world.provider.getDimensionId()) {
 		case 0: //Overworld
-			this.runGenerator(this.gen_green_gem_ore, world, rand, chunkX, chunkZ, 20, 0, 64);
-			this.runGenerator(this.gen_red_gem_ore, world, rand, chunkX, chunkZ, 20, 0, 32);
-			this.runGenerator(this.gen_blue_gem_ore, world, rand, chunkX, chunkZ, 20, 0, 16);
-			this.runGenerator(this.gen_truesilver_ore, world, rand, chunkX, chunkZ, 15, 0, 16);
+			
 			break;
 		case -1: //Nether
-			
+			this.runGenerator(this.gen_infernium_ore, world, rand, chunkX, chunkZ, 20, 0, 64);
 			break;
 		case 1: //End
 			

@@ -7,6 +7,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 
 import com.firebearsstudio.arcaneindustry.Main;
+import com.firebearsstudio.arcaneindustry.blocks.ArcaneBasicNetherOre;
 import com.firebearsstudio.arcaneindustry.blocks.ArcaneBlocks;
 
 public class BlockRenderRegister {
@@ -25,12 +26,16 @@ public class BlockRenderRegister {
 		reg(ArcaneBlocks.propertyBlock, 0, "block_properties_white");
 		reg(ArcaneBlocks.propertyBlock, 1, "block_properties_black");
 		
-		// ores
+		// overworld ores
 		reg(ArcaneBlocks.buttOre);
 		reg(ArcaneBlocks.multiOre);
 		reg(ArcaneBlocks.blueGemOre);
 		reg(ArcaneBlocks.redGemOre);
 		reg(ArcaneBlocks.greenGemOre);
+		reg(ArcaneBlocks.truesilverOre);
+		
+		// nether ores
+		reg(ArcaneBlocks.inferniumOre);
 		
 		// tile entities
 		reg(ArcaneBlocks.grinder);

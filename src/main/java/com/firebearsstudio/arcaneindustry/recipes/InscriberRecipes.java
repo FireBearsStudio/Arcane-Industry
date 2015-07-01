@@ -117,4 +117,5 @@ public class InscriberRecipes {
 		
 		return ((Float)entry.getValue()).floatValue();
 	}
+
 }

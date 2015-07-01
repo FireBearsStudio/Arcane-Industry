@@ -5,6 +5,7 @@ item.green_rough_gem.name=Rough Green Gem
 item.gem_dust.name=Gem Dust
 item.iron_dust.name=Iron Dust
 item.gold_dust.name=Gold Dust
+item.life_crystal.name=Life Crystal
 
 item.green_gem_sword.name=Green Gem Sword
 item.green_gem_pickaxe.name=Green Gem Pickaxe
@@ -53,3 +54,4 @@ tile.green_gem_ore.name=Green Gem Ore
 tile.grinder.name=Grinder
 
 container.grinder=Grinder
+container.inscriber=Inscriber

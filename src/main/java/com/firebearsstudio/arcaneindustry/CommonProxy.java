@@ -12,6 +12,7 @@ import com.firebearsstudio.arcaneindustry.crafting.ArcaneCrafting;
 import com.firebearsstudio.arcaneindustry.gui.GuiHandler;
 import com.firebearsstudio.arcaneindustry.items.ArcaneItems;
 import com.firebearsstudio.arcaneindustry.tileentity.ArcaneTileEntities;
+import com.firebearsstudio.arcaneindustry.world.ArcaneNetherGen;
 import com.firebearsstudio.arcaneindustry.world.ArcaneWorldGen;
 
 public class CommonProxy {
@@ -28,6 +29,7 @@ public class CommonProxy {
 	public void init(FMLInitializationEvent e) {
 		ArcaneCrafting.initCrafting();
 		GameRegistry.registerWorldGenerator(new ArcaneWorldGen(), 0);
+		GameRegistry.registerWorldGenerator(new ArcaneNetherGen(), 0);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}

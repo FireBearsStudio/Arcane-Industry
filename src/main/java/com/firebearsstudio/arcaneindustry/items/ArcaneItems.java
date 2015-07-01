@@ -14,12 +14,70 @@ public class ArcaneItems {
 	public static Item blueRoughGem;
 	public static Item redRoughGem;
 	public static Item greenRoughGem;
+	public static Item lifeCrystal;
+	
+	// dusts
 	public static Item gemDust;
 	public static Item dustIron;
 	public static Item dustGold;
+	public static Item dustInfernium;
+	public static Item dustTruesilver;
+	
+	// ingots
+	public static Item truesilverIngot;
+	public static Item inferniumIngot;
+	
+	// conduits
+	public static Item coalConduit;
+	public static Item redstoneConduit;
+	public static Item lapisConduit;
+	public static Item enderPearlConduit;
+	public static Item netherStarConduit;
+	
+	// frames
+	public static Item ironFrame;
+	public static Item goldFrame;
+	public static Item diamondFrame;
+	public static Item truesilverFrame;
+	public static Item inferniumFrame;
+	
+	// rough frames
+	public static Item ironFrameRoughGreen;
+	public static Item ironFrameRoughRed;
+	public static Item ironFrameRoughBlue;
+	public static Item goldFrameRoughGreen;
+	public static Item goldFrameRoughRed;
+	public static Item goldFrameRoughBlue;
+	public static Item diamondFrameRoughGreen;
+	public static Item diamondFrameRoughRed;
+	public static Item diamondFrameRoughBlue;
+	public static Item truesilverFrameRoughGreen;
+	public static Item truesilverFrameRoughRed;
+	public static Item truesilverFrameRoughBlue;
+	public static Item inferniumFrameRoughGreen;
+	public static Item inferniumFrameRoughRed;
+	public static Item inferniumFrameRoughBlue;
+	
+	// cut frames
+	public static Item ironFrameCutGreen;
+	public static Item ironFrameCutRed;
+	public static Item ironFrameCutBlue;
+	public static Item goldFrameCutGreen;
+	public static Item goldFrameCutRed;
+	public static Item goldFrameCutBlue;
+	public static Item diamondFrameCutGreen;
+	public static Item diamondFrameCutRed;
+	public static Item diamondFrameCutBlue;
+	public static Item truesilverFrameCutGreen;
+	public static Item truesilverFrameCutRed;
+	public static Item truesilverFrameCutBlue;
+	public static Item inferniumFrameCutGreen;
+	public static Item inferniumFrameCutRed;
+	public static Item inferniumFrameCutBlue;
 	
 	public static MetaItem metaItem;
 	
+	// tools
 	public static ItemArcaneSword greenGemSword;
 	public static ItemArcanePickaxe greenGemPickaxe;
 	public static ItemArcaneAxe greenGemAxe;
@@ -39,6 +97,7 @@ public class ArcaneItems {
 	public static ItemArcaneHoe blueGemHoe;
 	//public static ItemArcaneMultitool arcaneMulti;
 	
+	// armor
 	public static ItemArcaneArmor greenGemHelmet;
 	public static ItemArcaneArmor greenGemChestplate;
 	public static ItemArcaneArmor greenGemLeggings;
@@ -69,9 +128,66 @@ public class ArcaneItems {
 		GameRegistry.registerItem(blueRoughGem = new BasicItem("blue_rough_gem"), "blue_rough_gem");
 		GameRegistry.registerItem(redRoughGem = new BasicItem("red_rough_gem"), "red_rough_gem");
 		GameRegistry.registerItem(greenRoughGem = new BasicItem("green_rough_gem"), "green_rough_gem");
+		GameRegistry.registerItem(lifeCrystal = new ArcaneLivingCrystal("life_crystal"), "life_crystal");
+		
+		// dust
 		GameRegistry.registerItem(gemDust = new BasicItem("gem_dust"), "gem_dust");
 		GameRegistry.registerItem(dustIron = new BasicItem("iron_dust"), "iron_dust");
 		GameRegistry.registerItem(dustGold = new BasicItem("gold_dust"), "gold_dust");
+		GameRegistry.registerItem(dustInfernium = new BasicItem("infernium_dust"), "infernium_dust");
+		GameRegistry.registerItem(dustTruesilver = new BasicItem("truesilver_dust"), "truesilver_dust");
+		
+		// ingots
+		GameRegistry.registerItem(truesilverIngot = new BasicItem("truesilver_ingot"), "truesiver_ingot");
+		GameRegistry.registerItem(inferniumIngot = new BasicItem("infernium_ingot"), "infernium_ingot");
+		
+		// conduits
+		GameRegistry.registerItem(coalConduit = new BasicItem("coal_conduit"), "coal_conduit");
+		GameRegistry.registerItem(redstoneConduit = new BasicItem("redstone_conduit"), "redstone_conduit");
+		GameRegistry.registerItem(lapisConduit = new BasicItem("lapis_conduit"), "lapis_conduit");
+		GameRegistry.registerItem(enderPearlConduit = new BasicItem("ender_pearl_conduit"), "ender_pearl_conduit");
+		GameRegistry.registerItem(netherStarConduit = new BasicItem("nether_star_conduit"), "nether_star_conduit");
+		
+		// frames
+		GameRegistry.registerItem(ironFrame = new BasicItem("iron_frame"), "iron_frame");
+		GameRegistry.registerItem(goldFrame = new BasicItem("gold_frame"), "gold_frame");
+		GameRegistry.registerItem(diamondFrame = new BasicItem("diamond_frame"), "diamond_frame");
+		GameRegistry.registerItem(truesilverFrame = new BasicItem("truesilver_frame"), "truesilver_frame");
+		GameRegistry.registerItem(inferniumFrame = new BasicItem("infernium_frame"), "infernium_frame");
+		
+		// rough frames
+		GameRegistry.registerItem(ironFrameRoughGreen = new BasicItem("iron_frame_rough_green"), "iron_frame_rough_green");
+		GameRegistry.registerItem(ironFrameRoughRed = new BasicItem("iron_frame_rough_red"), "iron_frame_rough_red");
+		GameRegistry.registerItem(ironFrameRoughBlue = new BasicItem("iron_frame_rough_blue"), "iron_frame_rough_blue");
+		GameRegistry.registerItem(goldFrameRoughGreen = new BasicItem("gold_frame_rough_green"), "gold_frame_rough_green");
+		GameRegistry.registerItem(goldFrameRoughRed = new BasicItem("gold_frame_rough_red"), "gold_frame_rough_red");
+		GameRegistry.registerItem(goldFrameRoughBlue = new BasicItem("gold_frame_rough_blue"), "gold_frame_rough_blue");
+		GameRegistry.registerItem(diamondFrameRoughGreen = new BasicItem("diamond_frame_rough_green"), "diamond_frame_rough_green");
+		GameRegistry.registerItem(diamondFrameRoughRed = new BasicItem("diamond_frame_rough_red"), "diamond_frame_rough_red");
+		GameRegistry.registerItem(diamondFrameRoughBlue = new BasicItem("diamond_frame_rough_blue"), "diamond_frame_rough_blue");
+		GameRegistry.registerItem(truesilverFrameRoughGreen = new BasicItem("truesilver_frame_rough_green"), "truesilver_frame_rough_green");
+		GameRegistry.registerItem(truesilverFrameRoughRed = new BasicItem("truesilver_frame_rough_red"), "truesilver_frame_rough_red");
+		GameRegistry.registerItem(truesilverFrameRoughBlue = new BasicItem("truesilver_frame_rough_blue"), "truesilver_frame_rough_blue");
+		GameRegistry.registerItem(inferniumFrameRoughGreen = new BasicItem("infernium_frame_rough_green"), "infernium_frame_rough_green");
+		GameRegistry.registerItem(inferniumFrameRoughRed = new BasicItem("infernium_frame_rough_red"), "infernium_frame_rough_red");
+		GameRegistry.registerItem(inferniumFrameRoughBlue = new BasicItem("infernium_frame_rough_blue"), "infernium_frame_rough_blue");
+		
+		// cut frames
+		GameRegistry.registerItem(ironFrameCutGreen = new BasicItem("iron_frame_cut_green"), "iron_frame_cut_green");
+		GameRegistry.registerItem(ironFrameCutRed = new BasicItem("iron_frame_cut_red"), "iron_frame_cut_red");
+		GameRegistry.registerItem(ironFrameCutBlue = new BasicItem("iron_frame_cut_blue"), "iron_frame_cut_blue");
+		GameRegistry.registerItem(goldFrameCutGreen = new BasicItem("gold_frame_cut_green"), "gold_frame_cut_green");
+		GameRegistry.registerItem(goldFrameCutRed = new BasicItem("gold_frame_cut_red"), "gold_frame_cut_red");
+		GameRegistry.registerItem(goldFrameCutBlue = new BasicItem("gold_frame_cut_blue"), "gold_frame_cut_blue");
+		GameRegistry.registerItem(diamondFrameCutGreen = new BasicItem("diamond_frame_cut_green"), "diamond_frame_cut_green");
+		GameRegistry.registerItem(diamondFrameCutRed = new BasicItem("diamond_frame_cut_red"), "diamond_frame_cut_red");
+		GameRegistry.registerItem(diamondFrameCutBlue = new BasicItem("diamond_frame_cut_blue"), "diamond_frame_cut_blue");
+		GameRegistry.registerItem(truesilverFrameCutGreen = new BasicItem("truesilver_frame_cut_green"), "truesilver_frame_cut_green");
+		GameRegistry.registerItem(truesilverFrameCutRed = new BasicItem("truesilver_frame_cut_red"), "truesilver_frame_cut_red");
+		GameRegistry.registerItem(truesilverFrameCutBlue = new BasicItem("truesilver_frame_cut_blue"), "truesilver_frame_cut_blue");
+		GameRegistry.registerItem(inferniumFrameCutGreen = new BasicItem("infernium_frame_cut_green"), "infernium_frame_cut_green");
+		GameRegistry.registerItem(inferniumFrameCutRed = new BasicItem("infernium_frame_cut_red"), "infernium_frame_cut_red");
+		GameRegistry.registerItem(inferniumFrameCutBlue = new BasicItem("infernium_frame_cut_blue"), "infernium_frame_cut_blue");
 		
 		GameRegistry.registerItem(metaItem = new MetaItem("meta_item"), "meta_item");
 		
