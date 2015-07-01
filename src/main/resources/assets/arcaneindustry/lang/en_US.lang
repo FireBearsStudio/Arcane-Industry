@@ -6,14 +6,39 @@ item.gem_dust.name=Gem Dust
 item.iron_dust.name=Iron Dust
 item.gold_dust.name=Gold Dust
 
-item.arcane_sword.name=Gem Sword
-item.arcane_pickaxe.name=Gem Pickaxe
+item.green_gem_sword.name=Green Gem Sword
+item.green_gem_pickaxe.name=Green Gem Pickaxe
+item.green_gem_axe.name=Green Gem Axe
+item.green_gem_spade.name=Green Gem Shovel
+item.green_gem_hoe.name=Green Gem Hoe
 item.arcane_multitool.name=Gem Multitool
 
-item.arcane_helmet.name=Gem Helmet
-item.arcane_chestplate.name=Gem Chestplate
-item.arcane_leggings.name=Gem Leggings
-item.arcane_boots.name=Gem Boots
+item.red_gem_sword.name=Red Gem Sword
+item.red_gem_pickaxe.name=Red Gem Pickaxe
+item.red_gem_axe.name=Red Gem Axe
+item.red_gem_spade.name=Red Gem Shovel
+item.red_gem_hoe.name=Red Gem Hoe
+
+item.blue_gem_sword.name=Blue Gem Sword
+item.blue_gem_pickaxe.name=Blue Gem Pickaxe
+item.blue_gem_axe.name=Blue Gem Axe
+item.blue_gem_spade.name=Blue Gem Shovel
+item.blue_gem_hoe.name=Blue Gem Hoe
+
+item.green_gem_helmet.name=Green Gem Helmet
+item.green_gem_chestplate.name=Green Gem Chestplate
+item.green_gem_leggings.name=Green Gem Leggings
+item.green_gem_boots.name=Green Gem Boots
+
+item.red_gem_helmet.name=Red Gem Helmet
+item.red_gem_chestplate.name=Red Gem Chestplate
+item.red_gem_leggings.name=Red Gem Leggings
+item.red_gem_boots.name=Red Gem Boots
+
+item.blue_gem_helmet.name=Blue Gem Helmet
+item.blue_gem_chestplate.name=Blue Gem Chestplate
+item.blue_gem_leggings.name=Blue Gem Leggings
+item.blue_gem_boots.name=Blue Gem Boots
 
 item.arcane_cocoa.name=Magic Cocoa
 
@@ -26,7 +51,5 @@ tile.red_gem_ore.name=Red Gem Ore
 tile.green_gem_ore.name=Green Gem Ore
 
 tile.grinder.name=Grinder
-tile.inscriber.name=Inscriber
 
 container.grinder=Grinder
-container.inscriber=Inscriber

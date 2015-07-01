@@ -1,7 +1,7 @@
 {
     "parent":"builtin/generated",
     "textures": {
-        "layer0":"arcaneindustry:items/arcane_cocoa"
+        "layer0":"arcaneindustry:items/blue_gem_chestplate"
     },
     "display": {
         "thirdperson": {
