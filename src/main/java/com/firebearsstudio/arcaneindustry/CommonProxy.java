@@ -11,6 +11,7 @@ import com.firebearsstudio.arcaneindustry.blocks.ArcaneBlocks;
 import com.firebearsstudio.arcaneindustry.crafting.ArcaneCrafting;
 import com.firebearsstudio.arcaneindustry.gui.GuiHandler;
 import com.firebearsstudio.arcaneindustry.items.ArcaneItems;
+import com.firebearsstudio.arcaneindustry.mob.EntitySalamander;
 import com.firebearsstudio.arcaneindustry.tileentity.ArcaneTileEntities;
 import com.firebearsstudio.arcaneindustry.world.ArcaneNetherGen;
 import com.firebearsstudio.arcaneindustry.world.ArcaneWorldGen;
@@ -23,6 +24,7 @@ public class CommonProxy {
 		ArcaneBlocks.createBlocks();
 		ArcaneTileEntities.init();
 		ArcaneCrafting.oreRegistration();
+		EntitySalamander.mainRegistry();
 	}
 	
 	@EventHandler

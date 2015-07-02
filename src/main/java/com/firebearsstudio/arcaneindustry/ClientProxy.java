@@ -1,11 +1,16 @@
 package com.firebearsstudio.arcaneindustry;
 
-import com.firebearsstudio.arcaneindustry.client.render.blocks.BlockRenderRegister;
-import com.firebearsstudio.arcaneindustry.client.render.items.ItemRenderRegister;
-
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import com.firebearsstudio.arcaneindustry.client.render.blocks.BlockRenderRegister;
+import com.firebearsstudio.arcaneindustry.client.render.items.ItemRenderRegister;
+import com.firebearsstudio.arcaneindustry.mob.EntitySalamanderMob;
+import com.firebearsstudio.arcaneindustry.mob.ModelSalamander;
+import com.firebearsstudio.arcaneindustry.mob.RenderSalamanderMob;
 
 public class ClientProxy extends CommonProxy {
 
@@ -23,6 +28,8 @@ public class ClientProxy extends CommonProxy {
 		
 		ItemRenderRegister.registerItemRenderer();
 		BlockRenderRegister.registerBlockRenderer();
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntitySalamanderMob.class, new RenderSalamanderMob(Minecraft.getMinecraft().getRenderManager(), new ModelSalamander(), 0.0F));
 	}
 
 	@Override
