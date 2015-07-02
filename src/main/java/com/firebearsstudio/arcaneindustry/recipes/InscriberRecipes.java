@@ -79,6 +79,20 @@ public class InscriberRecipes {
 		}
 	}
 	
+	public void addInscribingRecipe(String input, int amountInput, ItemStack stackOut, float exp) {
+		List<ItemStack> list1 = OreDictionary.getOres(input);
+
+		for (int i = 0; i < list1.size(); i++) {
+			if (list1.get(i) != null) {
+				ItemStack stack1 = list1.get(i).copy();
+				stack1.stackSize = amountInput;
+
+				inscribingList.put(stack1, stackOut);
+				experienceList.put(stackOut, Float.valueOf(exp));			
+			}
+		}
+	}
+	
 	// Returns the inscribing result of an item
 	public ItemStack getInscribingResult(ItemStack stack) {
 		Iterator iterator = inscribingList.entrySet().iterator();
@@ -117,5 +131,4 @@ public class InscriberRecipes {
 		
 		return ((Float)entry.getValue()).floatValue();
 	}
-
 }

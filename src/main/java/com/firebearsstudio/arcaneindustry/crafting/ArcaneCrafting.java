@@ -134,11 +134,11 @@ public class ArcaneCrafting {
 				"SSS", 'A', "gemPeridot", 'B', "gemRuby", 'C', "gemSapphire", 'S', "stone", 'L', "gemLife"));
 		// inscriber recipes
 		// conduits
-		InscriberRecipes.instance().addInscribingRecipe(new ItemStack(ArcaneItems.coalConduit), new ItemStack(Items.coal, 1), 0.1F);
-		InscriberRecipes.instance().addInscribingRecipe(new ItemStack(ArcaneItems.redstoneConduit), "dustRedstone", 1, 0.1F);
-		InscriberRecipes.instance().addInscribingRecipe(new ItemStack(ArcaneItems.lapisConduit), "gemLapis", 1, 0.1F);
-		InscriberRecipes.instance().addInscribingRecipe(new ItemStack(ArcaneItems.enderPearlConduit), new ItemStack(Items.ender_pearl, 1), 0.1F);
-		InscriberRecipes.instance().addInscribingRecipe(new ItemStack(ArcaneItems.netherStarConduit), new ItemStack(Items.nether_star, 1), 0.1F);
+		InscriberRecipes.instance().addInscribingRecipe(new ItemStack(Items.coal, 1), new ItemStack(ArcaneItems.coalConduit, 1), 0.1F);
+		InscriberRecipes.instance().addInscribingRecipe("dustRedstone", 1, new ItemStack(ArcaneItems.redstoneConduit, 1), 0.1F);
+		InscriberRecipes.instance().addInscribingRecipe("gemLapis", 1, new ItemStack(ArcaneItems.lapisConduit, 1), 0.1F);
+		InscriberRecipes.instance().addInscribingRecipe(new ItemStack(Items.ender_pearl, 1), new ItemStack(ArcaneItems.enderPearlConduit, 1), 0.1F);
+		InscriberRecipes.instance().addInscribingRecipe(new ItemStack(Items.nether_star, 1), new ItemStack(ArcaneItems.netherStarConduit, 1), 0.1F);
 		
 		// cut frames
 		// -iron frame cut

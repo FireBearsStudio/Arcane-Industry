@@ -46,7 +46,6 @@ public class ArcaneInscriber extends BlockContainer {
 		this.stepSound = soundTypeStone;
 		this.blockParticleGravity = 1.0F;
 		this.slipperiness = 0.6f;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 		this.lightOpacity = 0;	// cast a light shadow
 		this.setTickRandomly(false);
 		this.useNeighborBrightness = false;
