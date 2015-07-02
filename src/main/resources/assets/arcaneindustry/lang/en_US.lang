@@ -2,10 +2,59 @@ item.butt_of_power.name=Butt of Power
 item.blue_rough_gem.name=Rough Blue Gem
 item.red_rough_gem.name=Rough Red Gem
 item.green_rough_gem.name=Rough Green Gem
+item.life_crystal.name=Life Crystal
+
+
 item.gem_dust.name=Gem Dust
 item.iron_dust.name=Iron Dust
 item.gold_dust.name=Gold Dust
-item.life_crystal.name=Life Crystal
+item.truesilver_dust.name=Truesilver Dust
+item.infernium_dust.name=Infernium Dust
+
+item.infernium_ingot.name=Infernium Ingot
+item.truesilver_ingot.name=Truesilver Ingot
+
+
+item.iron_frame.name=Iron Frame
+item.iron_frame_rough_green.name=Rough Green Iron Frame
+item.iron_frame_rough_red.name=Rough Red Iron Frame
+item.iron_frame_rough_blue.name=Rough Blue Iron Frame
+item.iron_frame_cut_green.name=Cut Green Iron Frame
+item.iron_frame_cut_red.name=Cut Red Iron Frame
+item.iron_frame_cut_blue.name=Cut Blue Iron Frame
+
+item.gold_frame.name=Gold Frame
+item.gold_frame_rough_green.name=Rough Green Gold Frame
+item.gold_frame_rough_red.name=Rough Red Gold Frame
+item.gold_frame_rough_blue.name=Rough Blue Gold Frame
+item.gold_frame_cut_green.name=Cut Green Gold Frame
+item.gold_frame_cut_red.name=Cut Red Gold Frame
+item.gold_frame_cut_blue.name=Cut Blue Gold Frame
+
+item.diamond_frame.name=Diamond Frame
+item.diamond_frame_rough_green.name=Rough Green Diamond Frame
+item.diamond_frame_rough_red.name=Rough Red Diamond Frame
+item.diamond_frame_rough_blue.name=Rough Blue Diamond Frame
+item.diamond_frame_cut_green.name=Cut Green Diamond Frame
+item.diamond_frame_cut_red.name=Cut Red Diamond Frame
+item.diamond_frame_cut_blue.name=Cut Blue Diamond Frame
+
+item.truesilver_frame.name=Truesilver Frame
+item.truesilver_frame_rough_green.name=Rough Green Truesilver Frame
+item.truesilver_frame_rough_red.name=Rough Red Truesilver Frame
+item.truesilver_frame_rough_blue.name=Rough Blue Truesilver Frame
+item.truesilver_frame_cut_green.name=Cut Green Truesilver Frame
+item.truesilver_frame_cut_red.name=Cut Red Truesilver Frame
+item.truesilver_frame_cut_blue.name=Cut Blue Truesilver Frame
+
+item.infernium_frame.name=Infernium Frame
+item.infernium_frame_rough_green.name=Rough Green Infernium Frame
+item.infernium_frame_rough_red.name=Rough Red Infernium Frame
+item.infernium_frame_rough_blue.name=Rough Blue Infernium Frame
+item.infernium_frame_cut_green.name=Cut Green Infernium Frame
+item.infernium_frame_cut_red.name=Cut Red Infernium Frame
+item.infernium_frame_cut_blue.name=Cut Blue Infernium Frame
+
 
 item.green_gem_sword.name=Green Gem Sword
 item.green_gem_pickaxe.name=Green Gem Pickaxe
@@ -50,9 +99,13 @@ tile.arcane_multi_ore.name=Multi Ore
 tile.blue_gem_ore.name=Blue Gem Ore
 tile.red_gem_ore.name=Red Gem Ore
 tile.green_gem_ore.name=Green Gem Ore
+tile.truesilver_ore.name=Truesilver Ore
+tile.infernium_ore.name=Infernium Ore
 
 tile.grinder.name=Grinder
 tile.inscriber.name=Inscriber
 
 container.grinder=Grinder
 container.inscriber=Inscriber
+
+entity.salamander.name=Salamander

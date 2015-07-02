@@ -1,5 +1,8 @@
 {
-    "parent":"arcaneindustry:block/infernium_dust",
+    "parent":"builtin/generated",
+    "textures": {
+        "layer0":"arcaneindustry:items/infernium_dust"
+    },
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

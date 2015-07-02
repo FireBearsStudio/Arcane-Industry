@@ -13,9 +13,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import com.firebearsstudio.arcaneindustry.Main;
-import com.firebearsstudio.arcaneindustry.inventory.GrinderContainer;
 import com.firebearsstudio.arcaneindustry.inventory.InscriberContainer;
-import com.firebearsstudio.arcaneindustry.tileentity.GrinderTileEntity;
 import com.firebearsstudio.arcaneindustry.tileentity.InscriberTileEntity;
 
 public class InscriberGui extends GuiContainer {
@@ -67,7 +65,7 @@ public class InscriberGui extends GuiContainer {
 		// draw the fuel bar
 		double burnRemaining = tileInscriber.fractionOfFuelRemaining();
 		int yOffset = (int)((1.0 - burnRemaining) * FIRE_BAR_HEIGHT);
-		drawTexturedModalRect(guiLeft + FIRE_BAR_XPOS, guiTop + FIRE_BAR_YPOS, FIRE_BAR_ICON_U, FIRE_BAR_ICON_V, FIRE_BAR_WIDTH, (int)(burnRemaining * FIRE_BAR_HEIGHT));
+		drawTexturedModalRect(guiLeft + FIRE_BAR_XPOS, guiTop + FIRE_BAR_YPOS + yOffset, FIRE_BAR_ICON_U, FIRE_BAR_ICON_V + yOffset, FIRE_BAR_WIDTH, FIRE_BAR_HEIGHT - yOffset);
 	}
 	
 	@Override
@@ -104,9 +102,9 @@ public class InscriberGui extends GuiContainer {
 	}
 
 	int getProgressLevel(int progressIndicatorPixelWidth) {
-		int ticksGrindingItemSoFar = tileInscriber.getField(2);
+		int ticksInscribingItemSoFar = tileInscriber.getField(2);
 		int ticksPerItem = tileInscriber.getField(3);
-		return ticksPerItem != 0 && ticksGrindingItemSoFar != 0 ?
-				ticksGrindingItemSoFar * progressIndicatorPixelWidth / ticksPerItem : 0;
+		return ticksPerItem != 0 && ticksInscribingItemSoFar != 0 ?
+				ticksInscribingItemSoFar * progressIndicatorPixelWidth / ticksPerItem : 0;
 	}
 }

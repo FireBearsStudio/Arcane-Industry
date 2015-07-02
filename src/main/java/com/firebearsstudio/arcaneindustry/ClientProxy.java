@@ -28,7 +28,7 @@ public class ClientProxy extends CommonProxy {
 		
 		ItemRenderRegister.registerItemRenderer();
 		BlockRenderRegister.registerBlockRenderer();
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntitySalamanderMob.class, new RenderSalamanderMob(Minecraft.getMinecraft().getRenderManager(), new ModelSalamander(), 0.0F));
 	}
 

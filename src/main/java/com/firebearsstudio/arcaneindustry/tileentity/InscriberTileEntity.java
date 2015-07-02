@@ -1,5 +1,7 @@
 package com.firebearsstudio.arcaneindustry.tileentity;
 
+import org.lwjgl.Sys;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -42,12 +44,10 @@ public class InscriberTileEntity extends TileEntityLockable implements IUpdatePl
 
 	@Override
 	public void update() {
-		if (burnTimeRemaining <= 0) {
-			burnTimeRemaining = burnFuel();
-		}
-		
 		// if there is nothing to inscribe or there is no room in the output, reset the cooktime and return
 		if (canInscribe()) {
+			burnFuel();
+		
 			// if fuel is available, keep cooking the item
 			if (burnTimeRemaining > 0) {
 				cookTime++;
@@ -60,12 +60,20 @@ public class InscriberTileEntity extends TileEntityLockable implements IUpdatePl
 			}
 		} else if (inscriberItemStackArray[slotEnum.INPUT_SLOT.ordinal()] == null) {
 			cookTime = 0;
+			
+			if (burnTimeRemaining > 0) {
+				burnTimeRemaining--;
+			}
+		}
+		
+		if (inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()] != null && burnTimeInitialValue == 0) {
+			burnTimeInitialValue = getItemBurnTime(inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()]);
 		}
 	}
 	
 	public boolean canInscribe() {
-		// if nothing in input slot or nothing in fuel slot
-		if (inscriberItemStackArray[slotEnum.INPUT_SLOT.ordinal()] == null || inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()] == null) {
+		// if nothing in input slot
+		if (inscriberItemStackArray[slotEnum.INPUT_SLOT.ordinal()] == null) {
 			return false;
 		} else {
 			// check if it has an inscribing recipe
@@ -108,17 +116,26 @@ public class InscriberTileEntity extends TileEntityLockable implements IUpdatePl
 		}
 	}
 	
-	int burnFuel() {
-		int burningCount = 0;
+	void burnFuel() {
 		boolean invChanged = false;
 		if (burnTimeRemaining > 0) {
-			--burnTimeRemaining;
+			burnTimeRemaining--;
 		}
 		
 		if (burnTimeRemaining == 0) {
-			if (inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()] != null) {
-				if (inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()].getItem() == ArcaneItems.gemDust) {
-					burningCount = 100;
+			if (inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()] != null && getItemBurnTime(inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()]) > 0) {
+				// if the stack in this slot is not null and is fuel, set the burnTimeRemaining & burnTimeInitialValue to the
+				// item's burn time and decrease the stack size
+				burnTimeRemaining = burnTimeInitialValue = getItemBurnTime(inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()]);
+				inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()].stackSize--;
+				invChanged = true;
+				
+				// if the stack size new equals 0 set the slot contents to the items container item. This is for fuel
+				// items such as lava buckets so that the bucket is not consumed. If the item does not have
+				// a container item getContainerItem returns null which sets the slot contents to null
+				if (inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()].stackSize == 0) {
+					inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()] = inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()].getItem()
+							.getContainerItem(inscriberItemStackArray[slotEnum.FUEL_SLOT.ordinal()]);
 				}
 			}
 		}
@@ -126,8 +143,6 @@ public class InscriberTileEntity extends TileEntityLockable implements IUpdatePl
 		if (invChanged) {
 			markDirty();
 		}
-		
-		return burningCount;
 	}
 	
 	@Override
@@ -245,8 +260,8 @@ public class InscriberTileEntity extends TileEntityLockable implements IUpdatePl
 				return cookTime;
 			case 1:
 				return burnTimeRemaining;
-			case 2:
-				return burnTimeInitialValue;
+			/*case 2:
+				return burnTimeInitialValue;*/
 			default:
 				return 0;
 		}
@@ -261,16 +276,16 @@ public class InscriberTileEntity extends TileEntityLockable implements IUpdatePl
 		case 1:
 			burnTimeRemaining = value;
 			break;
-		case 2:
+		/*case 2:
 			burnTimeInitialValue = value;
-			break;
+			break;*/
 		default:
 			break;
 		}
 	}
 	@Override
 	public int getFieldCount() {
-		return 3;
+		return 2;
 	}
 
 	@Override
@@ -323,41 +338,13 @@ public class InscriberTileEntity extends TileEntityLockable implements IUpdatePl
 			EnumFacing direction) {
 		return true;
 	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
-		NBTTagList tagList = compound.getTagList("Items", 10);
-		inscriberItemStackArray = new ItemStack[getSizeInventory()];
-		
-		for (int i = 0; i < tagList.tagCount(); ++i) {
-			NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
-			byte b0 = tagCompound.getByte("Slot");
-			
-			if (b0 >= 0 && b0 < inscriberItemStackArray.length) {
-				inscriberItemStackArray[b0] = ItemStack.loadItemStackFromNBT(tagCompound);
-			}
-		}
-		
-		//timeCanCook = compound.getShort("CookTime");
-		cookTime = compound.getShort("CookTime");
-		burnTimeRemaining = compound.getShort("BurnRemaining");
-		burnTimeInitialValue = compound.getShort("BurnInitial");
-		//COOK_TIME_FOR_COMPLETION = compound.getShort("CookTimeTotal");
-		
-		if (compound.hasKey("CustomName", 8)) {
-			inscriberCustomName = compound.getString("CustomName");
-		}
-	}
 	
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public void writeToNBT(NBTTagCompound compound) {		
 		super.writeToNBT(compound);
-		//compound.setShort("CookTime", (short)timeCanCook);
 		compound.setShort("CookTime", (short)cookTime);
 		compound.setShort("BurnRemaining", (short)burnTimeRemaining);
 		compound.setShort("BurnInitial", (short)burnTimeInitialValue);
-		//compound.setShort("CookTimeTotal", (short)COOK_TIME_FOR_COMPLETION);
 		NBTTagList tagList = new NBTTagList();
 		
 		for (int i = 0; i < inscriberItemStackArray.length; ++i) {
@@ -376,9 +363,39 @@ public class InscriberTileEntity extends TileEntityLockable implements IUpdatePl
 		}
 	}
 
-	/*public int timeToCookOneItem(ItemStack stack) {
-		return COOK_TIME_FOR_COMPLETION;
-	}*/
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
+		NBTTagList tagList = compound.getTagList("Items", 10);
+		inscriberItemStackArray = new ItemStack[getSizeInventory()];
+		
+		for (int i = 0; i < tagList.tagCount(); ++i) {
+			NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
+			byte b0 = tagCompound.getByte("Slot");
+			
+			if (b0 >= 0 && b0 < inscriberItemStackArray.length) {
+				inscriberItemStackArray[b0] = ItemStack.loadItemStackFromNBT(tagCompound);
+			}
+		}
+		
+		cookTime = compound.getShort("CookTime");
+		burnTimeRemaining = compound.getShort("BurnRemaining");
+		burnTimeInitialValue = compound.getShort("BurnInitial");
+		
+		if (compound.hasKey("CustomName", 8)) {
+			inscriberCustomName = compound.getString("CustomName");
+		}
+	}
+	
+	public static short getItemBurnTime(ItemStack stack) {
+		int burnTime = 0;
+		
+		if (stack.getItem() == ArcaneItems.gemDust) {
+			burnTime = 100;
+		}
+		
+		return (short)MathHelper.clamp_int(burnTime, 0, Short.MAX_VALUE);
+	}
 	
 	public double fractionOfCookTimeComplete() {
 		double fraction = cookTime / (double)COOK_TIME_FOR_COMPLETION;

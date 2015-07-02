@@ -9,18 +9,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.firebearsstudio.arcaneindustry.recipes.GrinderRecipes;
+import com.firebearsstudio.arcaneindustry.recipes.InscriberRecipes;
 import com.firebearsstudio.arcaneindustry.slot.SlotGrinderOutput;
-import com.firebearsstudio.arcaneindustry.tileentity.GrinderTileEntity;
 import com.firebearsstudio.arcaneindustry.tileentity.InscriberTileEntity;
 
 public class InscriberContainer extends Container {
 
 	final InscriberTileEntity tileInscriber;
 	final int sizeInventory;
-	int ticksCookingItemSoFar;
-	int ticksPerItem;
-	int timeCanCook;
+	int cookTime;
+	int burnTimeRemaining;
+	int burnTimeInitialValue;
 	
 	public InscriberContainer(InventoryPlayer playerInventory, InscriberTileEntity tileEntity) {
 		tileInscriber = tileEntity;
@@ -30,7 +29,7 @@ public class InscriberContainer extends Container {
 		// fuel slot
 		addSlotToContainer(new Slot(tileInscriber, InscriberTileEntity.slotEnum.FUEL_SLOT.ordinal(), 56, 53));
 		// output slot
-		addSlotToContainer(new SlotGrinderOutput(playerInventory.player, tileInscriber, GrinderTileEntity.slotEnum.OUTPUT_SLOT.ordinal(), 116, 35));
+		addSlotToContainer(new SlotGrinderOutput(playerInventory.player, tileInscriber, InscriberTileEntity.slotEnum.OUTPUT_SLOT.ordinal(), 116, 35));
 		
 		// add player inventory slots
 		// note that the slot numbers are within the player inventory so can be same as the tile entity inventory
@@ -61,23 +60,23 @@ public class InscriberContainer extends Container {
 		
 		for (int i = 0; i < crafters.size(); ++i) {
 			ICrafting icrafting = (ICrafting)crafters.get(i);
-			
-			if (ticksCookingItemSoFar != tileInscriber.getField(2)) {
-				icrafting.sendProgressBarUpdate(this, 2, tileInscriber.getField(2));
-			}
-			
-			if (timeCanCook != tileInscriber.getField(0)) {
+
+			if (cookTime != tileInscriber.getField(0)) {
 				icrafting.sendProgressBarUpdate(this, 0, tileInscriber.getField(0));
 			}
 			
-			if (ticksPerItem != tileInscriber.getField(3)) {
-				icrafting.sendProgressBarUpdate(this, 3, tileInscriber.getField(3));
+			if (burnTimeRemaining != tileInscriber.getField(1)) {
+				icrafting.sendProgressBarUpdate(this, 2, tileInscriber.getField(1));
+			}
+			
+			if (burnTimeInitialValue != tileInscriber.getField(2)) {
+				icrafting.sendProgressBarUpdate(this, 3, tileInscriber.getField(2));
 			}
 		}
-		
-		ticksCookingItemSoFar = tileInscriber.getField(2);
-		timeCanCook = tileInscriber.getField(0);
-		ticksPerItem = tileInscriber.getField(3);
+
+		cookTime = tileInscriber.getField(0);
+		burnTimeRemaining = tileInscriber.getField(1);
+		burnTimeInitialValue = tileInscriber.getField(2);
 	}
 
 	@Override
@@ -93,23 +92,70 @@ public class InscriberContainer extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-		ItemStack stack = null;
+		Slot sourceSlot = (Slot)inventorySlots.get(slotIndex);
+		if (sourceSlot == null || !sourceSlot.getHasStack()) {
+			return null;
+		}
+		ItemStack stack = sourceSlot.getStack();
+		ItemStack stackCopy = stack.copy();
+		
+		// check if the slot clicked is one of the vanilla container slot
+		if (slotIndex >= 3 && slotIndex < 39) {
+			// this is a vanilla container slot so merge the stack into one of the furnace slots
+			// if the stack can be inscribed try to merge the stack into the input slots
+			if (InscriberRecipes.instance().getInscribingResult(stack) != null) {
+				if (!mergeItemStack(stack, 0, 1, false)) {
+					return null;
+				}
+			} else if (InscriberTileEntity.getItemBurnTime(stack) > 0) {
+				if (!mergeItemStack(stack, 1, 2, false)) {
+					return null;
+				}
+			} else {
+				return null;
+			}
+		} else if (slotIndex >= 0 && slotIndex < 4) {
+			// this is an inscriber slot so merge the stack into the player's inventory: try the hotbar first and then the main inventory
+			// because the main inventory slots are immediately after the hotbar slots, we can just merge with a single call
+			if (!mergeItemStack(stack, 3, 39, false)) {
+				return null;
+			}
+		} else {
+			System.err.println("invalid slotIndex: " + slotIndex);
+			return null;
+		}
+		
+		// if stack size == 0 (the entire stack was moved) set slot contents to null
+		if (stack.stackSize == 0) {
+			sourceSlot.putStack(null);
+		} else {
+			sourceSlot.onSlotChanged();
+		}
+		
+		sourceSlot.onPickupFromSlot(player, stack);
+		return stackCopy;
+		
+		/*ItemStack stack = null;
 		Slot slot = (Slot)inventorySlots.get(slotIndex);
 		
 		if (slot != null && slot.getHasStack()) {
 			ItemStack stack2 = slot.getStack();
 			stack = stack2.copy();
 			
-			if (slotIndex == GrinderTileEntity.slotEnum.OUTPUT_SLOT.ordinal()) {
+			if (slotIndex == InscriberTileEntity.slotEnum.OUTPUT_SLOT.ordinal()) {
 				if (!mergeItemStack(stack2, sizeInventory, sizeInventory + 36, true)) {
 					return null;
 				}
 				
 				slot.onSlotChange(stack2, stack);
-			} else if (slotIndex != GrinderTileEntity.slotEnum.INPUT_SLOT.ordinal()) {
-				// check if there is a grinding recipe for the stack
-				if (GrinderRecipes.instance().getGrindingResult(stack2) != null) {
+			} else if (slotIndex != InscriberTileEntity.slotEnum.INPUT_SLOT.ordinal() && slotIndex != InscriberTileEntity.slotEnum.FUEL_SLOT.ordinal()) {
+				// check if there is an inscriber recipe for the stack
+				if (InscriberRecipes.instance().getInscribingResult(stack2) != null) {
 					if (!mergeItemStack(stack2, 0, 1, false)) {
+						return null;
+					}
+				} else if (stack2.getItem() == ArcaneItems.gemDust) {
+					if (!mergeItemStack(stack2, 1, 2, false)) {
 						return null;
 					}
 				} else if (slotIndex >= sizeInventory && slotIndex < sizeInventory + 27) {	// player inventory slots
@@ -136,6 +182,6 @@ public class InscriberContainer extends Container {
 			slot.onPickupFromSlot(player, stack2);
 		}
 		
-		return stack;
+		return stack;*/
 	}
 }

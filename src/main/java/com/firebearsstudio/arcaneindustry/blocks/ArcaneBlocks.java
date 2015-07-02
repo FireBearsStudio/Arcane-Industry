@@ -40,7 +40,7 @@ public class ArcaneBlocks {
 		GameRegistry.registerBlock(truesilverOre = new ArcaneBlockBasicOre("truesilver_ore", Material.rock, 10.0F, 6.0F, "pickaxe", 3), "truesilver_ore");
 		
 		// nether ore
-		GameRegistry.registerBlock(inferniumOre = new ArcaneBasicNetherOre("infernium_ore", Material.rock, 2.0F, 15.0F, "pickaxe", 3), "infernium_ore");
+		GameRegistry.registerBlock(inferniumOre = new ArcaneBasicNetherOre("infernium_ore", Material.rock, 2.0F, 15.0F, "pickaxe", 0), "infernium_ore");
 		
 		// machines
 		GameRegistry.registerBlock(grinder = new ArcaneBasicGrinder("grinder", false), "grinder");

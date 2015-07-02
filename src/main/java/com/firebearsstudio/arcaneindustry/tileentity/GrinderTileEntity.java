@@ -52,7 +52,7 @@ public class GrinderTileEntity extends TileEntityLockable implements IUpdatePlay
 		boolean changedGrindingState = false;
 		
 		if (grindingSomething()) {
-			--timeCanGrind;
+			timeCanGrind--;
 		}
 		
 		if (!worldObj.isRemote) {

@@ -24,6 +24,8 @@ public class CommonProxy {
 		ArcaneBlocks.createBlocks();
 		ArcaneTileEntities.init();
 		ArcaneCrafting.oreRegistration();
+		
+		// mobs
 		EntitySalamander.mainRegistry();
 	}
 	

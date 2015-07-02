@@ -32,17 +32,17 @@ public class LivingDropEvent {
 		// since you use the exact same probability for all your cases
 		if (event.source.getDamageType().equals("player") && event.entity.worldObj.rand.nextFloat() < 1.00F) {
 			if (event.entity instanceof EntityZombie) {
-				if (event.entity.worldObj.rand.nextInt(100) < 10) {
+				//if (event.entity.worldObj.rand.nextInt(100) < 10) {
 					event.entityLiving.dropItem(ArcaneItems.lifeCrystal, 1);
-				}
+				//}
 			} else if (event.entity instanceof EntitySkeleton) {
 				if (event.entity.worldObj.rand.nextInt(100) < 10) {
 					event.entityLiving.dropItem(ArcaneItems.lifeCrystal, 1);
 				}
 			} else if (event.entity instanceof EntityCreeper) {
-				if (event.entity.worldObj.rand.nextInt(100) < 10) {
+				//if (event.entity.worldObj.rand.nextInt(100) < 10) {
 					event.entityLiving.dropItem(ArcaneItems.lifeCrystal, 1);
-				}
+				//}
 			} else if (event.entity instanceof EntityEnderman) {
 				if (event.entity.worldObj.rand.nextInt(100) < 10) {
 					event.entityLiving.dropItem(ArcaneItems.lifeCrystal, 1);

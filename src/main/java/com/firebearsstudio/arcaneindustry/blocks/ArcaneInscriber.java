@@ -23,7 +23,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.firebearsstudio.arcaneindustry.Main;
-import com.firebearsstudio.arcaneindustry.tileentity.GrinderTileEntity;
 import com.firebearsstudio.arcaneindustry.tileentity.InscriberTileEntity;
 
 public class ArcaneInscriber extends BlockContainer {
@@ -53,7 +52,7 @@ public class ArcaneInscriber extends BlockContainer {
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random random, int fortune) {
-		return Item.getItemFromBlock(ArcaneBlocks.grinder);
+		return Item.getItemFromBlock(ArcaneBlocks.inscriber);
 	}
 	
 	@Override
@@ -108,8 +107,8 @@ public class ArcaneInscriber extends BlockContainer {
 		if (!hasTileEntity) {
 			TileEntity tileEntity = world.getTileEntity(pos);
 			
-			if (tileEntity instanceof GrinderTileEntity) {
-				InventoryHelper.dropInventoryItems(world, pos, (GrinderTileEntity)tileEntity);
+			if (tileEntity instanceof InscriberTileEntity) {
+				InventoryHelper.dropInventoryItems(world, pos, (InscriberTileEntity)tileEntity);
 				world.updateComparatorOutputLevel(pos, this);
 			}
 		}
@@ -120,7 +119,7 @@ public class ArcaneInscriber extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, BlockPos pos) {
-		return Item.getItemFromBlock(ArcaneBlocks.grinder);
+		return Item.getItemFromBlock(ArcaneBlocks.inscriber);
 	}
 	
 	@Override
